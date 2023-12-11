@@ -1,0 +1,11 @@
+input_type: angles
+encoder_type: GRU
+attention_type: soft
+embedding_dim: 64
+hidden_size: 64
+lr: 0.001
+min_freq: 3
+num_layers: 1
+rate_dropout: 0.5
+teacher_force_ratio: 0.5
+path: ./models/soft/UniGRU_angles_emb_64_hid_64_soft.zip

@@ -1,0 +1,17 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+.idea/*
+
+#models weights
+models/*
+datasets/*.gif
+datasets/*.npz
+datasets/*csv
+
+src/csv_results
+src/seg_figs
+src/*csv
+*.npy
+
+
+

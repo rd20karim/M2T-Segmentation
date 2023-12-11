@@ -1,0 +1,33 @@
+input_type:
+- cartesian
+encoder_type:
+- MLP
+#- deep-MLP
+attention_type:
+- local_recurrent
+batch_size:
+- 128
+hidden_dim :
+- 128
+embedding_dim:
+- 64
+hidden_size:
+#- 64
+- 128
+lr:
+- 0.0035
+- 0.001
+mask:
+- True
+#- False
+D:
+- 5
+num_layers:
+- 1
+rate_dropout:
+- 0.5
+teacher_force_ratio:
+- 0.5
+scale :
+- "False"
+path : ./models/checkpoint

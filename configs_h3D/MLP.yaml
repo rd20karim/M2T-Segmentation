@@ -1,0 +1,22 @@
+input_type: cartesian
+encoder_type: MLP
+attention_type: local_recurrent
+batch_size: 512
+embedding_dim: 128
+hidden_size: 256
+hidden_dim: 512
+lr: 0.0005
+min_freq: 3
+num_layers: 1
+rate_dropout: 0
+teacher_force_ratio: 0.5
+name_file: mask_TRUE_TF0.7_D10
+mask : True
+D: 10
+multiple_references : "True"
+scale : "False"
+beam_size : 1
+n_map : 250
+n_gifs : 250
+save_results: ./GRU_D10tf07_
+path : ./models/HML3D/MLP/model_h3D_mask_TRUE_TF0.7_D10

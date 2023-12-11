@@ -1,0 +1,34 @@
+input_type:
+  - cartesian
+encoder_type:
+  - MLP
+attention_type:
+  - local_recurrent
+batch_size:
+  - 32
+embedding_dim:
+  - 128
+hidden_size:
+  - 256
+#  - 512
+hidden_dim:
+  - 512
+lr:
+  - 0.00050
+mask:
+# - False
+  - True
+D:
+  - 10
+  - 20
+min_freq:
+  - 3
+num_layers:
+  - 1
+rate_dropout:
+  - 0
+teacher_force_ratio:
+- 0.5
+- 0.7
+n_epochs : 150
+resume_epoch : 0

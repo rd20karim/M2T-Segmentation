@@ -1,0 +1,14 @@
+input_type: cartesian
+encoder_type: GRU
+attention_type: local_recurrent
+batch_size: 291
+embedding_dim: 64
+hidden_size: 64
+lr: 0.001
+mask: True
+D: 5
+min_freq: 3
+num_layers: 1
+rate_dropout: 0.5
+teacher_force_ratio: 0.5
+path: ./models/local_rec/GRU_loc_rec.zip
