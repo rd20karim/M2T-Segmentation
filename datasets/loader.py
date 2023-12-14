@@ -1,13 +1,8 @@
-#from datasets.kit_txt_dataset import newkitDataset
 import torch
 from torch.utils.data import DataLoader,BatchSampler,SequentialSampler
 from torch.nn.utils.rnn import pad_sequence
 import logging
 import copy
-#%%
-#path= "/home/karim/PycharmProjects/semMotion/datasets/data_m2l_2016.npz"
-#path = "/home/karim/PycharmProjects/semMotion/datasets/data_m2l_no_added_samples.npz"
-#TODO remove this token from dataset http://timmcgrawtourtickets.com/
 
 def pad_collate(batch):
     temp = list(zip(*batch))
@@ -36,8 +31,6 @@ def pad_collate_m2l(batch,return_trg_len,pad=True):
 def build_data(dataset_class=None,train_batch_size=32,test_batch_size=32,min_freq=1,return_lengths=False,
                path_txt=None,return_trg_len=None,joint_angles=False,multiple_references = False,random_state=11,path=None):
     logging.info("Building dataset ... ")
-    if dataset_class is None : dataset_class = newkitDataset; path_txt ="/home/karim/PycharmProjects/semMotion/datasets/sentences_autoencoder_data.csv"
-    # Return trg len for jointly learning pose and text
     data_loader = dataset_class(path,path_txt=path_txt,min_freq=min_freq,joint_angles=joint_angles,
                                 multiple_references = multiple_references,random_state=random_state)
 
@@ -55,18 +48,18 @@ def build_data(dataset_class=None,train_batch_size=32,test_batch_size=32,min_fre
 
     shuffle = False # order
     train_data_loader = DataLoader(dataset=train_dataset,batch_size=train_batch_size,
-                             batch_sampler = None,# BatchSampler(SequentialSampler(range(len(train_dataset))),batch_size = train_batch_size,drop_last=False),
+                             batch_sampler = None,
                              shuffle=shuffle,collate_fn = pad_collate_func,
                              num_workers=0, pin_memory=False,drop_last=False)
 
     val_data_loader = DataLoader(dataset=val_dataset,batch_size=test_batch_size,
-                             batch_sampler = None,# BatchSampler(SequentialSampler(range(len(test_dataset))),batch_size = test_batch_size,drop_last=False),
+                             batch_sampler = None,
                              shuffle=shuffle, collate_fn = pad_collate_func ,
-                             num_workers=0, pin_memory=False,drop_last=False)#, batch_size=None, sampler=None,
+                             num_workers=0, pin_memory=False,drop_last=False)
 
     test_data_loader = DataLoader(dataset=test_dataset,batch_size=test_batch_size,
-                             batch_sampler = None,# BatchSampler(SequentialSampler(range(len(test_dataset))),batch_size = test_batch_size,drop_last=False),
+                             batch_sampler = None,
                              shuffle=shuffle, collate_fn = pad_collate_func ,
-                             num_workers=0, pin_memory=False,drop_last=False)#, batch_size=None, sampler=None,
+                             num_workers=0, pin_memory=False,drop_last=False)
 
     return train_data_loader,val_data_loader,test_data_loader

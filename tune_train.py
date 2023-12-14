@@ -66,18 +66,16 @@ def run_batch(model, batch, data_loader, mode, teacher_force_ratio, device=None,
                 g.writelines([" ".join(k) + "," for k in m] + ["\n"])
         Yrefs = batch[1] if multiple_references else trg
         ref_sentences = [[_dec_numeric_sentence(ref, remove_sos_eos=True).split(" ") for ref in refs] for refs in Yrefs]
-        # TODO REMOVE THE DEBUG PARAM
         bleu_score_beam = [torchtext.data.metrics.bleu_score(
             candidate_corpus=[m[k] if len(m) >= k + 1 else m[-1] for m in predicted_sentences],
             references_corpus=ref_sentences,
             max_n=num_grams, weights=[1 / num_grams] * num_grams) for k in range(beam_size)]
         return bleu_score_beam, predicted_sentences, Yrefs
 
-def train_m2l(config,data=None): # add run_batch arg to be able to use inside raytune
+def train_m2l(config,data=None): 
     if "kit" in args.dataset_name:
         # -------------KIT IMPORTS------------------
         from architectures.crnns import seq2seq
-        # TODO CHECK WITH DIFFERENCE BETWEEN SPLITS AND RANDOM STATE 11 KIT 2016
         if "2016" in args.dataset_name:
             from datasets.kit_m2t_dataset_2016 import dataset_class
             path_txt = r"C:\Users\karim\PycharmProjects\SemMotion\sentences_corrections_origin.csv"  # os.getcwd()+"\sentences_corrections_origin.csv"
@@ -116,7 +114,7 @@ def train_m2l(config,data=None): # add run_batch arg to be able to use inside ra
 
     if args.resume_epoch:
         logging.info("Resuming final model")
-        path_weights = r"C:\Users\karim\ray_results\train__\lambda_cabd0_00000_0_D=5,beta=0,embedding_dim=64,encoder_type=MLP,hidden_size=64,lr=0.0060,mask=True,sheduler=adam_2023-06-13_10-32-11\checkpoint_000199\checkpoint"
+        path_weights = r"C:\Users\karim\ray_results\checkpoint"
         model.load_state_dict(torch.load(path_weights)[0])
 
     """ Parallelization    """
@@ -233,15 +231,6 @@ if __name__=="__main__":
                 "input_type" : choices["input_type"]
             }
 
-    #"--------------------- BUILD DATA -------------------------- "
-    # path_txt = os.getcwd()+"\sentences_corrections_origin.csv"
-    # train_data_loader, val_data_loader, test_data_loader = build_data(dataset_class=dataset_class, min_freq=config["min_freq"],
-    #                                                                   train_batch_size=config["batch_size"],test_batch_size=config["batch_size"],
-    #                                                                   return_lengths=True, path_txt=path_txt, #r"{}".format(path_txt)
-    #                                                                   return_trg_len=True, joint_angles=True if config["input_type"]!="cartesian" else False,
-    #                                                                   multiple_references=args.multiple_references,random_state=config["random_state"])
-    #
-    #
     gpus_per_trial = 1
     num_samples  = 1
     max_num_epochs = config["n_epochs"]
@@ -251,13 +240,9 @@ if __name__=="__main__":
     reporter = CLIReporter(metric_columns=["loss_val", "bleu_val", "loss_train", "bleu_train", "training_iteration"])
     logging.info(f"training on device :{config['device']}" )
 
-    #train_function = lambda config,data : train_m2l(config,data)
     ray.shutdown()
     from ray.tune import Stopper
-
-    # def get_combination(num_samples):
-    #     pass
-
+    
     ray.init()
     result = tune.run(train_m2l,
         resources_per_trial={"gpu": gpus_per_trial},

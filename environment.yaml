@@ -268,5 +268,5 @@ dependencies:
     - wcwidth==0.2.6
     - xdg==6.0.0
     - xxhash==3.2.0
-prefix: C:\Users\karim\.conda\envs\temp_venv
+prefix: C:\Users\karim\.conda\envs\raypy310
 

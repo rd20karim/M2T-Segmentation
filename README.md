@@ -1,11 +1,22 @@
 # Description 
 
-Official implementation of our paper [Motion2Language: Unsupervised learning of synchronized semantic motion segmentation](https://arxiv.org/abs/2310.10594) 
+Official implementation of our paper :
 
-In this project, we introduce **_synchronized captioning of 3D human motion_**.
+<div align="center">
 
-This work aims to present first experiments for progressive 
-text generation in synchronization with motion action times.
+[Motion2Language, unsupervised learning of synchronized semantic motion segmentation](https://arxiv.org/pdf/2310.10594) 
+
+[![arxiv](https://img.shields.io/badge/arXiv-Motion2language-red?logo=arxiv)](https://arxiv.org/abs/2310.10594)
+[![Journal](https://img.shields.io/badge/Version_of_Record-blue)](https://rdcu.be/dtylu)
+[![License](https://img.shields.io/badge/License-MIT-green)]()
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/motion2language-unsupervised-learning-of/motion-captioning-on-humanml3d)](https://paperswithcode.com/sota/motion-captioning-on-humanml3d?p=motion2language-unsupervised-learning-of)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/motion2language-unsupervised-learning-of/motion-captioning-on-kit-motion-language)](https://paperswithcode.com/sota/motion-captioning-on-kit-motion-language?p=motion2language-unsupervised-learning-of)
+
+</div>
+
+* In this project, we introduce **synchronized captioning of 3D human motion**.
+
+* This work aims to present first experiments for progressive text generation in synchronization with motion action times.
 
 <div align="center">
     <span style="color:darkblue; font-weight:bold; font-size: 25px">KIT-ML</span>
@@ -30,15 +41,17 @@ text generation in synchronization with motion action times.
 
 If you find this code useful in your work, please cite:
 
-```
-@misc{radouane2023motion2language,
-      title={Motion2Language, Unsupervised learning of synchronized semantic motion segmentation}, 
-      author={Karim Radouane and Andon Tchechmedjiev and Sylvie Ranwez and Julien Lagarde},
-      year={2023},
-      eprint={2310.10594},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
-}
+```markdown
+@article{radouane23motion2language,
+   author={Radouane, Karim and Tchechmedjiev, Andon and Lagarde, Julien and Ranwez, Sylvie},
+   title={Motion2language, unsupervised learning of synchronized semantic motion segmentation},
+   journal={Neural Computing and Applications},
+   ISSN={1433-3058},
+   url={http://dx.doi.org/10.1007/s00521-023-09227-z},
+   DOI={10.1007/s00521-023-09227-z},
+   publisher={Springer Science and Business Media LLC},
+   year={2023},
+   month=dec}
 ```
 
 
