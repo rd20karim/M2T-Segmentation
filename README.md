@@ -1,12 +1,13 @@
 # Description 
 
-Official implementation of our paper :
+Official implementation of our paper for synchronized motion to text generation:
 
 <div align="center">
 
 [Motion2Language, unsupervised learning of synchronized semantic motion segmentation](https://arxiv.org/pdf/2310.10594) 
 
 [![arxiv](https://img.shields.io/badge/arXiv-Motion2language-red?logo=arxiv)](https://arxiv.org/abs/2310.10594)
+[![web](https://img.shields.io/badge/project-page-gold)](https://rd20karim.github.io/m2t-seg-web/)
 [![Journal](https://img.shields.io/badge/Version_of_Record-blue)](https://rdcu.be/dtylu)
 [![License](https://img.shields.io/badge/License-MIT-green)]()
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/motion2language-unsupervised-learning-of/motion-captioning-on-humanml3d)](https://paperswithcode.com/sota/motion-captioning-on-humanml3d?p=motion2language-unsupervised-learning-of)
@@ -86,16 +87,16 @@ In this case you need to perform these pre-processing steps for text corrections
 
 * Original KIT version
 
-Models with different configurations are available here : [Models Original KIT](https://drive.google.com/drive/folders/1-lgI-d8A1iZPBDH0K4hw22g0tpbggT6H?usp=drive_link)
+Models with different configurations are available here: [Models Original KIT](https://drive.google.com/drive/folders/1-lgI-d8A1iZPBDH0K4hw22g0tpbggT6H?usp=drive_link)
 
 * Augmented KIT-ML version and HumanML3D
 
-Models for both datasets are available here : [Models](https://drive.google.com/drive/folders/13Mvll7JcOW--NI8elQQr3C0b2MSpB0GZ?usp=sharing)
+Models for both datasets are available here: [Models](https://drive.google.com/drive/folders/13Mvll7JcOW--NI8elQQr3C0b2MSpB0GZ?usp=sharing)
 
 In the following for each python script, all available choices can be displayed by running ``` python name_script.py --help ```
 
 # Training
-As described in the paper [Motion2Language](https://arxiv.org/abs/2310.10594) the attention mechanisms was done as follows :
+As described in the paper [Motion2Language](https://arxiv.org/abs/2310.10594) the attention mechanisms was done as follows:
 
 _**Soft Attention:**_
 Experimented with a model employing a GRU encoder for both Cartesian and angles input types.
@@ -173,11 +174,11 @@ Different values of D
 In this case the argument ```dataset_name``` should be specified, the default was _kit2016._
 
 1) KIT-MLD Augmented dataset
-* MLP : ``` python src/evaluate_m2L.py --config ./configs_kit_aug/MLP.yaml --dataset_name kit ```
-* deep-MLP : ``` python src/evaluate_m2L.py --config ./configs_kit_aug/deep-MLP.yaml --dataset_name kit ```
+* MLP: ``` python src/evaluate_m2L.py --config ./configs_kit_aug/MLP.yaml --dataset_name kit ```
+* deep-MLP: ``` python src/evaluate_m2L.py --config ./configs_kit_aug/deep-MLP.yaml --dataset_name kit ```
 
 2) HumanML3D
-* MLP : ``` python src/evaluate_m2L.py --config ./configs_h3D/MLP.yaml --dataset_name h3D```
+* MLP: ``` python src/evaluate_m2L.py --config ./configs_h3D/MLP.yaml --dataset_name h3D```
 
 # Visualizations 
 
@@ -260,4 +261,4 @@ An interactive notebook demonstrating all functionalities of this project will b
 
 
 # License 
-This project is under MIT license.
+This project is under [MIT license](https://github.com/rd20karim/M2T-Segmentation?tab=MIT-1-ov-file).
