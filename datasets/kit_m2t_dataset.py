@@ -28,7 +28,7 @@ class dataset_class(Dataset):
 
         # read corrected descriptions
         if path_txt is not None:
-            with open(path_txt, mode='r') as ftxt:
+            with open(path_txt, mode='r',encoding='utf-8') as ftxt:
                 double_desc = ftxt.readlines()
                 self.sentences = []
                 for desc in double_desc:

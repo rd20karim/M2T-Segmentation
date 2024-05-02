@@ -102,7 +102,7 @@ class vocabulary():
             if len(corrected_desc) >= 1:
                 self.corrected_sentences.append(desc)
                 # for user examination
-                with open("sentence_correction.txt", mode="a") as fa:
+                with open("sentence_correction.txt", mode="a",encoding='utf-8') as fa:
                     fa.write("%s \t %s\n" % (desc, corrected_desc))
             # no correction made conserve the original description
             else:
@@ -120,7 +120,8 @@ class vocabulary():
         spell = SpellChecker()
         shift = 0
         # CREATE FILE TO SAVE CORRECTED DESCRIPTIONS
-        with open("sentences_corrections"+".csv", mode="w") as fa: pass
+        file_name_corrections = "sentences_corrections"
+        with open(file_name_corrections+".csv", mode="w", encoding='utf-8') as fa: pass
         for idx, desc in enumerate(self.old_sentences):
             desc = str(desc)
             # SOME SPECIAL PRE-PROCESSING
@@ -159,7 +160,7 @@ class vocabulary():
             self.corrected_sentences.append(desc)
             # FOR USER EXAMINATION:
             try:
-                with open("sentences_corrections"+".csv", mode="a") as fa:
+                with open(file_name_corrections+".csv", mode="a",encoding='utf-8') as fa:
                     fa.write("%s \t %s\n" % (self.old_sentences[idx].replace("\n",""),self.corrected_sentences[idx-shift]))
             except IndexError:
                     logging.info("description %s NOT USED! ",self.sentences[idx])
@@ -188,7 +189,7 @@ class vocabulary():
         # sanity check
         assert self.vocab_size ==len(self.token_freq)+sp_count
 
-        # with open("./dataset_vocab.txt", mode='w') as fw:
+        # with open("./dataset_vocab.txt", mode='w',encoding='utf-8') as fw:
         #     for key, value in self.token_freq.items():
         #         fw.write("%s:%s\n" % (key, value))
 
@@ -211,7 +212,8 @@ class vocabulary():
         # Note that self.idx_to_token don't have the same length as self.token_to_idx when  min_freq !=1
 
         self.vocab_size_unk  = len(self.idx_to_token)
-
+        logging.info(f"The vocab size is {self.vocab_size}"
+                     f" with minimum frequency of {min_freq} it becomes --> {self.vocab_size_unk} tokens")
         # Verify if we have successive int indexes of tokens
         idxs = set(self.token_to_idx.values())
         try:
