@@ -159,7 +159,6 @@ def train_m2l(config,data=None):
                 loss_val_b, bleu_score, _, _ = run_batch(model, batch, val_data_loader, mode=mode,optimizer=optimizer,
                                                          teacher_force_ratio=teacher_force_ratio,device=config["device"],BETA=config["beta"],epoch=epoch)
                 BLEU_scores += [bleu_score]
-                BLEU_scores += [bleu_score]
                 loss_val_b = loss_val_b.item()
                 epoch_loss += loss_val_b
                 logging.info(f"Loss/{mode}_batch %d --> %.3f BLEU score_batch %.3f" % (i, loss_val_b, bleu_score))

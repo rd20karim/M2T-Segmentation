@@ -1,7 +1,6 @@
 import spacy
 #import contextualSpellCheck
 from spellchecker import SpellChecker
-from datasets.kit_dataset import kitDataset   # datasets is required for external import of this file
 import logging
 
 logging.basicConfig(

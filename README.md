@@ -8,10 +8,8 @@ Official implementation of our paper for synchronized motion to text generation:
 
 [![arxiv](https://img.shields.io/badge/arXiv-Motion2language-red?logo=arxiv)](https://arxiv.org/abs/2310.10594)
 [![web](https://img.shields.io/badge/project-page-gold)](https://rd20karim.github.io/m2t-seg-web/)
-[![Journal](https://img.shields.io/badge/Version_of_Record-blue)](https://rdcu.be/dtylu)
+[![Journal](https://img.shields.io/badge/Journal-Version_of_Record-blue)](https://rdcu.be/dtylu)
 [![License](https://img.shields.io/badge/License-MIT-green)]()
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/motion2language-unsupervised-learning-of/motion-captioning-on-humanml3d)](https://paperswithcode.com/sota/motion-captioning-on-humanml3d?p=motion2language-unsupervised-learning-of)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/motion2language-unsupervised-learning-of/motion-captioning-on-kit-motion-language)](https://paperswithcode.com/sota/motion-captioning-on-kit-motion-language?p=motion2language-unsupervised-learning-of)
 
 </div>
 
@@ -153,7 +151,7 @@ or using a config file :
 python src/evaluate_m2L.py --config ./configs/soft/GRU.yaml
 ```
 
-## BLEU score : corpus level
+## BLEU score: corpus level
 
 First, to obtain a corpus-level BLEU score, the batch size should be the size of the evaluation subset.
 If memory is not sufficient, you can use the CSV file of the output predictions. 
